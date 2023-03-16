@@ -1,5 +1,5 @@
-export const defaultTheme = {
-    color: {
+export const theme = {
+    colorSchema: {
         backgroundBase: '#fff',
         backgroundBaseLevel2: '#9C9EA01F',
         backgroundBaseLevel3:

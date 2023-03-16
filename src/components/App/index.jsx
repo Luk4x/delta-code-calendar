@@ -1,5 +1,6 @@
+import { Header } from '../Header';
 import {} from './styled';
 
 export function App() {
-    return <h1>yo</h1>;
+    return <Header />;
 }
