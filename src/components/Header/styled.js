@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const HeaderStyled = styled.header`
+    position: sticky;
+    top: 0;
     background: ${props => props.theme.colorSchema.backgroundHighlight};
     height: 75px;
     width: 100%;

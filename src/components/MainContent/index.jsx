@@ -1,5 +1,6 @@
 import { MainStyled, UserInfoStyled } from './styled';
 import { UserCalendar } from '../UserCalendar';
+import { Footer } from '../Footer';
 
 export function MainContent() {
     return (
@@ -18,6 +19,7 @@ export function MainContent() {
                 </div>
             </UserInfoStyled>
             <UserCalendar />
+            <Footer />
         </MainStyled>
     );
 }
