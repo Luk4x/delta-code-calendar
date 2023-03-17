@@ -1,4 +1,5 @@
 import { MainStyled, UserInfoStyled } from './styled';
+
 import { UserCalendar } from '../UserCalendar';
 import { Footer } from '../Footer';
 

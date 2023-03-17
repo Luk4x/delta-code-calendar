@@ -1,5 +1,6 @@
-import { CalendarTimeSkipButton } from '../CalendarTimeSkipButton';
 import { SectionStyled, WrapTopButtonsStyled } from './styled';
+
+import { CalendarTimeSkipButton } from '../CalendarTimeSkipButton';
 
 export function UserCalendar() {
     return (
