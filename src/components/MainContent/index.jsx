@@ -3,19 +3,22 @@ import { MainStyled, UserInfoStyled } from './styled';
 import { UserCalendar } from '../UserCalendar';
 import { Footer } from '../Footer';
 
+import { user } from '../../utils/mockups';
+
 export function MainContent() {
+    const userFirstName = user.fullName.split(' ')[0];
+
     return (
         <MainStyled>
             <UserInfoStyled>
-                <h4>Bom dia, Luiz!</h4>
+                <h4>
+                    Bom dia, <span>{userFirstName}</span>!
+                </h4>
                 <div>
-                    <img
-                        src="https://github.com/luiz-from-delta.png"
-                        alt="Foto do usuário"
-                    />
+                    <img src={user.imageUrl} alt="Foto do usuário" />
                     <div>
-                        <p>Luiz Antônio Neto</p>
-                        <strong>Delta Code Ltda</strong>
+                        <p>{user.fullName}</p>
+                        <strong>{user.organization}</strong>
                     </div>
                 </div>
             </UserInfoStyled>

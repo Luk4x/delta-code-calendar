@@ -14,6 +14,10 @@ export const UserInfoStyled = styled.div`
         font-weight: 500;
         font-size: 14px;
         margin-bottom: 20px;
+
+        span {
+            text-transform: capitalize;
+        }
     }
 
     & > div {
@@ -30,6 +34,7 @@ export const UserInfoStyled = styled.div`
 
         p {
             font-weight: 500;
+            text-transform: capitalize;
         }
 
         strong {
