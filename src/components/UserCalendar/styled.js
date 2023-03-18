@@ -11,4 +11,5 @@ export const WrapTopButtonsStyled = styled.div`
     justify-content: start;
     align-items: center;
     gap: 16px;
+    margin-bottom: 24px;
 `;

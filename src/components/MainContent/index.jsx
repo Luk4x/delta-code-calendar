@@ -3,7 +3,7 @@ import { MainStyled, UserInfoStyled } from './styled';
 import { UserCalendar } from '../UserCalendar';
 import { Footer } from '../Footer';
 
-import { user } from '../../utils/mockups';
+import { user } from '../../utils/userMockup';
 
 export function MainContent() {
     const userFirstName = user.fullName.split(' ')[0];
@@ -15,7 +15,7 @@ export function MainContent() {
                     Bom dia, <span>{userFirstName}</span>!
                 </h4>
                 <div>
-                    <img src={user.imageUrl} alt="Foto do usuário" />
+                    <img src={user.imageUrl} alt={`Foto do usuário ${user.fullName}`} />
                     <div>
                         <p>{user.fullName}</p>
                         <strong>{user.organization}</strong>
