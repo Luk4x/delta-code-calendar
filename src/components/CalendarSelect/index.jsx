@@ -11,7 +11,12 @@ export function CalendarSelect({ name, apparentName, values, selectedValue }) {
                 <select defaultValue={values[selectedValue]} name={name} id={name}>
                     {values.map(value => (
                         <option value={value} key={value}>
-                            {value}
+                            {
+                                // Capitalizing text
+                                typeof value === 'string'
+                                    ? value.charAt(0).toUpperCase() + value.slice(1)
+                                    : value
+                            }
                         </option>
                     ))}
                 </select>

@@ -1,11 +1,17 @@
-import { SectionStyled, WrapTopButtonsStyled } from './styled';
+import { SectionStyled, WrapTopButtonsStyled, WrapSelectStyled } from './styled';
 
 import { CalendarTimeSkipButton } from '../CalendarTimeSkipButton';
 import { CalendarSelect } from '../CalendarSelect';
 
-import { monthNames } from '../../utils/calendarHelpers';
+import { getYearsRangeList, monthNamesList } from '../../utils/calendarHelpers';
 
 export function UserCalendar() {
+    const currentMonthIndex = new Date().getMonth();
+
+    const currentYear = new Date().getFullYear();
+    const yearsRageList = getYearsRangeList(currentYear);
+    const currentYearIndex = yearsRageList.indexOf(currentYear);
+
     return (
         <SectionStyled>
             <WrapTopButtonsStyled>
@@ -13,12 +19,20 @@ export function UserCalendar() {
                     <CalendarTimeSkipButton buttonName={buttonName} key={buttonName} />
                 ))}
             </WrapTopButtonsStyled>
-            <CalendarSelect
-                name="months"
-                apparentName="mês"
-                values={monthNames}
-                selectedValue={new Date().getMonth()}
-            />
+            <WrapSelectStyled>
+                <CalendarSelect
+                    name="months"
+                    apparentName="mês"
+                    values={monthNamesList}
+                    selectedValue={currentMonthIndex}
+                />
+                <CalendarSelect
+                    name="years"
+                    apparentName="ano"
+                    values={yearsRageList}
+                    selectedValue={currentYearIndex}
+                />
+            </WrapSelectStyled>
         </SectionStyled>
     );
 }

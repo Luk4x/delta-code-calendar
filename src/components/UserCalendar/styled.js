@@ -13,3 +13,9 @@ export const WrapTopButtonsStyled = styled.div`
     gap: 16px;
     margin-bottom: 24px;
 `;
+
+export const WrapSelectStyled = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 18px;
+`;
