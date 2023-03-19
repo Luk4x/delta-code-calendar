@@ -1,7 +1,7 @@
 import { HeaderStyled } from './styled';
 
-import DeltaCodeFullLogo from '../../assets/icons/delta-code-full-logo.svg';
-import MenuIcon from '../../assets/icons/menu.svg';
+import DeltaCodeFullLogo from '/assets/icons/delta-code-full-logo.svg';
+import MenuIcon from '/assets/icons/menu.svg';
 
 export function Header() {
     return (

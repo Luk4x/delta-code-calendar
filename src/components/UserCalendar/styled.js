@@ -47,12 +47,12 @@ export const WrapDaysStyled = styled.div`
     gap: 20px;
     max-width: 388px;
 
-    span {
+    span,
+    button {
         width: 30px;
         height: 30px;
         font-size: 14px;
         text-transform: uppercase;
-        border-radius: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -61,11 +61,29 @@ export const WrapDaysStyled = styled.div`
 
 export const WeekDaysNameStyled = styled.span`
     font-weight: 500;
+    border-radius: 100%;
     background: ${props => props.theme.colorSchema.backgroundBaseLevel2};
     color: ${props => props.theme.colorSchema.textBase};
 `;
 
-export const DaysInMonthStyled = styled.span`
-    color: ${props => props.theme.colorSchema.textBaseLevel3};
+export const DaysInMonthStyled = styled.button`
     cursor: pointer;
+
+    ${props =>
+        props.currentDay
+            ? `
+            background: ${props.theme.colorSchema.backgroundHighlight};
+            color: ${props.theme.colorSchema.backgroundBase};
+            border-radius: 100%;
+            font-weight: 500;
+            `
+            : `
+            color: ${props.theme.colorSchema.textBaseLevel3};
+            border-radius: 30%;
+            background: none;
+            `}
+
+    &:hover, &:active, &:focus {
+        border: 1px solid ${props => props.theme.colorSchema.backgroundHighlight};
+    }
 `;

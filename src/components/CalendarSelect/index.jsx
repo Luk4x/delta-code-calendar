@@ -1,13 +1,13 @@
 import { ContainerStyled, SelectContainer } from './styled';
 
-import { ReactComponent as CalendarIcon } from '../../assets/icons/calendar-dates.svg';
+import DarkCalendarIcon from '/assets/icons/calendar-dates-dark.svg';
 
 export function CalendarSelect({ name, apparentName, values, selectedValue }) {
     return (
         <ContainerStyled>
             <label htmlFor={name}>{apparentName}</label>
             <SelectContainer>
-                <CalendarIcon />
+                <img src={DarkCalendarIcon} alt="Ícone de calendário" />
                 <select defaultValue={values[selectedValue]} name={name} id={name}>
                     {values.map(value => (
                         <option value={value} key={value}>

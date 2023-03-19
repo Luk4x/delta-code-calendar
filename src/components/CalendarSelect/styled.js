@@ -23,12 +23,8 @@ export const SelectContainer = styled.div`
     width: 185px;
     height: 42px;
 
-    svg {
+    img {
         height: 14px;
-
-        path {
-            fill: ${props => props.theme.colorSchema.textBase};
-        }
     }
 
     select {

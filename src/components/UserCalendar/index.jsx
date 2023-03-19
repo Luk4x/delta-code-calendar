@@ -17,6 +17,8 @@ import {
 } from '../../utils/calendarHelpers';
 
 export function UserCalendar() {
+    const currentDay = new Date().getDate();
+
     const currentMonthIndex = new Date().getMonth();
 
     const currentYear = new Date().getFullYear();
@@ -59,7 +61,9 @@ export function UserCalendar() {
                     </WeekDaysNameStyled>
                 ))}
                 {rangeOfDaysInMonth.map(day => (
-                    <DaysInMonthStyled key={day}>{day}</DaysInMonthStyled>
+                    <DaysInMonthStyled key={day} currentDay={day === currentDay}>
+                        {day}
+                    </DaysInMonthStyled>
                 ))}
             </WrapDaysStyled>
         </SectionStyled>
