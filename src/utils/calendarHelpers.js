@@ -13,18 +13,39 @@ export const monthNamesList = [
     'dezembro'
 ];
 
-export const getYearsRangeList = currentYear => {
-    let yearsRange = [];
+export const weekDayNamesList = [
+    'domingo',
+    'segunda',
+    'terça',
+    'quarta',
+    'quinta',
+    'sexta',
+    'sábado'
+];
 
-    for (let i = 10; i >= 1; i--) {
-        yearsRange.push(currentYear - i);
+export const getYearsRangeList = (currentYear, range) => {
+    const yearsRangeList = [];
+
+    for (let i = range; i >= 1; i--) {
+        yearsRangeList.push(currentYear - i);
     }
 
-    yearsRange.push(currentYear);
+    yearsRangeList.push(currentYear);
 
-    for (let i = 1; i <= 10; i++) {
-        yearsRange.push(currentYear + i);
+    for (let i = 1; i <= range; i++) {
+        yearsRangeList.push(currentYear + i);
     }
 
-    return yearsRange;
+    return yearsRangeList;
+};
+
+export const getRangeOfDaysInMonth = (year, month) => {
+    const totalDaysInMonth = new Date(year, month + 1, 0).getDate();
+    const rangeOfDaysInMonth = [];
+
+    for (let i = 1; i <= totalDaysInMonth; i++) {
+        rangeOfDaysInMonth.push(i);
+    }
+
+    return rangeOfDaysInMonth;
 };
