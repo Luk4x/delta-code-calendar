@@ -15,17 +15,18 @@ import {
     monthNamesList,
     weekDayNamesList
 } from '../../utils/calendarHelpers';
+import { useState } from 'react';
 
 export function UserCalendar() {
     const currentDay = new Date().getDate();
-
-    const currentMonthIndex = new Date().getMonth();
-
+    const currentMonth = new Date().getMonth();
     const currentYear = new Date().getFullYear();
     const yearsRageList = getYearsRangeList(currentYear, 10);
     const currentYearIndex = yearsRageList.indexOf(currentYear);
 
-    const rangeOfDaysInMonth = getRangeOfDaysInMonth(currentYear, currentMonthIndex);
+    const [selectedMonthIndex, setSelectedMonthIndex] = useState(currentMonth);
+    const [selectedYear, setSelectedYear] = useState(currentYear);
+    const rangeOfDaysInMonth = getRangeOfDaysInMonth(selectedYear, selectedMonthIndex);
 
     const timeSkipButton = id => {
         console.log(`calling button: '${id}'`);
@@ -45,13 +46,15 @@ export function UserCalendar() {
                     name="months"
                     apparentName="mês"
                     values={monthNamesList}
-                    selectedValue={currentMonthIndex}
+                    selectedValue={selectedMonthIndex}
+                    setValue={setSelectedMonthIndex}
                 />
                 <CalendarSelect
                     name="years"
                     apparentName="ano"
                     values={yearsRageList}
                     selectedValue={currentYearIndex}
+                    setValue={setSelectedYear}
                 />
             </WrapSelectStyled>
             <WrapDaysStyled>

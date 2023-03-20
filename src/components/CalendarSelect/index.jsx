@@ -2,13 +2,30 @@ import { ContainerStyled, SelectContainer } from './styled';
 
 import DarkCalendarIcon from '/assets/icons/calendar-dates-dark.svg';
 
-export function CalendarSelect({ name, apparentName, values, selectedValue }) {
+export function CalendarSelect({ name, apparentName, values, selectedValue, setValue }) {
+    const selectValue = e => {
+        const value = e.target.value;
+
+        // As I am showing the months by their proper names from an array, I work with them from the index of the value, which would be the name of the month, while with the years I work with the value itself. Below I do this check and return the correct value.
+        if (isNaN(parseInt(value))) {
+            const valueIndex = values.indexOf(e.target.value);
+            setValue(valueIndex);
+        } else {
+            setValue(value);
+        }
+    };
+
     return (
         <ContainerStyled>
             <label htmlFor={name}>{apparentName}</label>
             <SelectContainer>
                 <img src={DarkCalendarIcon} alt="Ícone de calendário" />
-                <select defaultValue={values[selectedValue]} name={name} id={name}>
+                <select
+                    defaultValue={values[selectedValue]}
+                    name={name}
+                    id={name}
+                    onChange={e => selectValue(e)}
+                >
                     {values.map(value => (
                         <option value={value} key={value}>
                             {

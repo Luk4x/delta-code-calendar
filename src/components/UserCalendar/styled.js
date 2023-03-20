@@ -79,7 +79,7 @@ export const DaysInMonthStyled = styled.button`
             `
             : `
             color: ${props.theme.colorSchema.textBaseLevel3};
-            border-radius: 30%;
+            border-radius: 8px;
             background: none;
             `}
 
