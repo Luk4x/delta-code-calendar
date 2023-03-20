@@ -13,7 +13,7 @@ export const monthNamesList = [
     'dezembro'
 ];
 
-export const weekDayNamesList = [
+export const weekdayNamesList = [
     'domingo',
     'segunda',
     'terça',
@@ -57,7 +57,7 @@ export const getRangeOfDaysInMonth = (year, month) => {
     }
 
     // Completing the array with the first days of the next month
-    for (let i = 1; rangeOfDaysInMonth.length < 35; i++) {
+    for (let i = 1; rangeOfDaysInMonth.length < 42; i++) {
         rangeOfDaysInMonth.push(i);
     }
 

@@ -18,3 +18,5 @@ No geral, você só precisa desenvolver o layout. A única parte que necessita t
 A primeira tela no mobile e na web representam o estado inicial da aplicação, que é quando você abre a página (na web) ou a tela (no mobile).
 Nesse estado inicial, vemos o dia de hoje destacado em verde e do lado (na web) ou embaixo (no mobile) vem uma legenda pra explicar o que os sinais e as cores significam.
 Quando o usuário seleciona um dia, aparecem os eventos daquele dia no lugar da legenda.
+
+-   relatar erro no layout;

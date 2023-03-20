@@ -59,7 +59,7 @@ export const WrapDaysStyled = styled.div`
     }
 `;
 
-export const WeekDaysNameStyled = styled.span`
+export const WeekdaysNameStyled = styled.span`
     font-weight: 500;
     border-radius: 100%;
     background: ${props => props.theme.colorSchema.backgroundBaseLevel2};

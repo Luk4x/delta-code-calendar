@@ -1,9 +1,11 @@
+import { useState } from 'react';
+
 import {
     SectionStyled,
     WrapTopButtonsStyled,
     WrapSelectStyled,
     WrapDaysStyled,
-    WeekDaysNameStyled,
+    WeekdaysNameStyled,
     DaysInMonthStyled
 } from './styled';
 
@@ -13,9 +15,8 @@ import {
     getRangeOfDaysInMonth,
     getYearsRangeList,
     monthNamesList,
-    weekDayNamesList
+    weekdayNamesList
 } from '../../utils/calendarHelpers';
-import { useState } from 'react';
 
 export function UserCalendar() {
     const currentDay = new Date().getDate();
@@ -58,10 +59,10 @@ export function UserCalendar() {
                 />
             </WrapSelectStyled>
             <WrapDaysStyled>
-                {weekDayNamesList.map(weekDayName => (
-                    <WeekDaysNameStyled key={weekDayName}>
+                {weekdayNamesList.map(weekDayName => (
+                    <WeekdaysNameStyled key={weekDayName}>
                         {weekDayName.charAt(0)}
-                    </WeekDaysNameStyled>
+                    </WeekdaysNameStyled>
                 ))}
                 {rangeOfDaysInMonth.map((day, i) => (
                     <DaysInMonthStyled key={i} currentDay={day === currentDay}>
