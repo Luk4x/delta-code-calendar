@@ -63,8 +63,8 @@ export function UserCalendar() {
                         {weekDayName.charAt(0)}
                     </WeekDaysNameStyled>
                 ))}
-                {rangeOfDaysInMonth.map(day => (
-                    <DaysInMonthStyled key={day} currentDay={day === currentDay}>
+                {rangeOfDaysInMonth.map((day, i) => (
+                    <DaysInMonthStyled key={i} currentDay={day === currentDay}>
                         {day}
                     </DaysInMonthStyled>
                 ))}
