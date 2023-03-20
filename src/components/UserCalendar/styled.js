@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-import { Fragment } from 'react';
-
-export const SectionStyled = styled.section`
-    border-right: 2px solid ${props => props.theme.colorSchema.borderBase};
-    min-height: 65vh;
-    max-width: 452px;
-`;
-
 export const WrapTopButtonsStyled = styled.div`
     display: flex;
     justify-content: start;
@@ -48,7 +40,8 @@ export const WrapDaysStyled = styled.div`
     max-width: 388px;
 
     span,
-    button {
+    button,
+    button span {
         width: 30px;
         height: 30px;
         font-size: 14px;
@@ -68,22 +61,106 @@ export const WeekdaysNameStyled = styled.span`
 
 export const DaysInMonthStyled = styled.button`
     cursor: pointer;
+    position: relative;
+    padding-bottom: 10px;
+    background: none;
+    border-radius: 8px;
 
-    ${props =>
-        props.currentDay
-            ? `
+    &:hover,
+    &:active,
+    &:focus {
+        ${props =>
+            !props.currentDay &&
+            `border: 1px solid ${props.theme.colorSchema.backgroundHighlight}`};
+
+        &::before,
+        &::after {
+            margin: -1px;
+        }
+    }
+
+    span {
+        color: ${props => props.theme.colorSchema.textBaseLevel3};
+
+        ${props =>
+            props.currentDay &&
+            `
             background: ${props.theme.colorSchema.backgroundHighlight};
             color: ${props.theme.colorSchema.backgroundBase};
             border-radius: 100%;
             font-weight: 500;
-            `
-            : `
-            color: ${props.theme.colorSchema.textBaseLevel3};
-            border-radius: 8px;
-            background: none;
-            `}
-
-    &:hover, &:active, &:focus {
-        border: 1px solid ${props => props.theme.colorSchema.backgroundHighlight};
+        `}
     }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        width: 6px;
+        height: 6px;
+        border-radius: 100%;
+    }
+
+    ${props => {
+        switch (props.dayEvents) {
+            case 'mixedValues':
+                return `
+                    &::before {
+                        left: 8px;
+                        background: ${props.theme.colorSchema.backgroundHighlight};
+                    }
+                    
+                    &::after {
+                        left: 16px;
+                        background: ${props.theme.colorSchema.backgroundHighlightLevel3};
+                    }
+                    `;
+
+            case 'onlyPositiveValues':
+                return `
+                        &::before {
+                            left: 8px;
+                            background: ${props.theme.colorSchema.backgroundHighlight};
+                        }
+                        
+                        &::after {
+                            left: 16px;
+                            background: ${props.theme.colorSchema.backgroundHighlight};
+                        }
+                `;
+
+            case 'onlyNegativeValues':
+                return `
+                        &::before {
+                            left: 8px;
+                            background: ${props.theme.colorSchema.backgroundHighlightLevel3};
+                        }
+                        
+                        &::after {
+                            left: 16px;
+                            background: ${props.theme.colorSchema.backgroundHighlightLevel3};
+                        }
+                `;
+
+            case 'negativeValue':
+                return `  
+                        &::after {
+                            left: 12px;
+                            background: ${props.theme.colorSchema.backgroundHighlightLevel3};
+                        }
+                `;
+
+            case 'positiveValue':
+                return `
+                        &::before {
+                            left: 12px;
+                            background: ${props.theme.colorSchema.backgroundHighlight};
+                        }
+                `;
+
+            default:
+                return null;
+        }
+    }}
 `;

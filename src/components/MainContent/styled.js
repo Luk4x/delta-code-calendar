@@ -44,3 +44,10 @@ export const UserInfoStyled = styled.div`
         }
     }
 `;
+
+export const SectionStyled = styled.section`
+    border-right: 2px solid ${props => props.theme.colorSchema.borderBase};
+    min-height: 65vh;
+    max-width: calc(388px + 64px);
+    position: relative;
+`;

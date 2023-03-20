@@ -1,9 +1,10 @@
-import { MainStyled, UserInfoStyled } from './styled';
+import { MainStyled, UserInfoStyled, SectionStyled } from './styled';
 
 import { UserCalendar } from '../UserCalendar';
 import { Footer } from '../Footer';
 
 import { user } from '../../utils/userMockup';
+import { UserCalendarEvents } from '../UserCalendarEvents';
 
 export function MainContent() {
     const userFirstName = user.fullName.split(' ')[0];
@@ -22,7 +23,10 @@ export function MainContent() {
                     </div>
                 </div>
             </UserInfoStyled>
-            <UserCalendar />
+            <SectionStyled>
+                <UserCalendar />
+                <UserCalendarEvents />
+            </SectionStyled>
             <Footer />
         </MainStyled>
     );

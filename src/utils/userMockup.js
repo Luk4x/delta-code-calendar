@@ -3,7 +3,7 @@ export const user = {
     imageUrl: 'https://github.com/luiz-from-delta.png',
     organization: 'delta code ltda',
     movements: {
-        '2023-01-10T03:00:00.000Z': [
+        '2023-01-10': [
             {
                 title: 'Pró-Labore: Luiz Antônio Teixeira...',
                 type: 'salário',
@@ -20,14 +20,14 @@ export const user = {
                 value: -1680.72
             }
         ],
-        '2023-01-11T03:00:00.000Z': [
+        '2023-01-11': [
             {
                 title: 'Prestação de Serviços 2: Delta Code',
                 type: 'receita',
                 value: 9100.28
             }
         ],
-        '2023-01-19T03:00:00.000Z': [
+        '2023-01-19': [
             {
                 title: 'INSS: Kaori Ayanami',
                 type: 'imposto',
@@ -36,5 +36,3 @@ export const user = {
         ]
     }
 };
-
-// new Date('2023-01-10T03:00:00.000Z').toLocaleString('pt-BR',).split(',')[0]

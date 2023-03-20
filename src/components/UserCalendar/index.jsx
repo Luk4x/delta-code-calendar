@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import {
-    SectionStyled,
     WrapTopButtonsStyled,
     WrapSelectStyled,
     WrapDaysStyled,
@@ -12,6 +11,7 @@ import {
 import { CalendarSelect } from '../CalendarSelect';
 
 import {
+    getCalendarEventsAlert,
     getRangeOfDaysInMonth,
     getYearsRangeList,
     monthNamesList,
@@ -33,8 +33,12 @@ export function UserCalendar() {
         console.log(`calling button: '${id}'`);
     };
 
+    const viewEventsInDate = (year, month, day) => {
+        console.log(new Date(year, month, day));
+    };
+
     return (
-        <SectionStyled>
+        <div>
             <WrapTopButtonsStyled>
                 {['Hoje', 'Esta semana', 'Este mês'].map(buttonName => (
                     <button key={buttonName} onClick={() => timeSkipButton(buttonName)}>
@@ -65,11 +69,25 @@ export function UserCalendar() {
                     </WeekdaysNameStyled>
                 ))}
                 {rangeOfDaysInMonth.map((day, i) => (
-                    <DaysInMonthStyled key={i} currentDay={day === currentDay}>
-                        {day}
+                    <DaysInMonthStyled
+                        key={i}
+                        currentDay={day.value === currentDay}
+                        dayEvents={
+                            day.isFromThisMonth &&
+                            getCalendarEventsAlert(
+                                selectedYear,
+                                selectedMonthIndex,
+                                day.value
+                            )
+                        }
+                        onClick={() =>
+                            viewEventsInDate(selectedYear, selectedMonthIndex, day.value)
+                        }
+                    >
+                        <span>{day.value}</span>
                     </DaysInMonthStyled>
                 ))}
             </WrapDaysStyled>
-        </SectionStyled>
+        </div>
     );
 }
