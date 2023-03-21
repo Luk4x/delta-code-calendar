@@ -14,65 +14,61 @@ export function UserCalendarEvents() {
         viewEventsInDate
     } = useContext(UserCalendarContext);
 
-    const initialDayEventsStructure = [[], [], []];
-    const [dayEventsStructure, setDayEventsStructure] = useState(
-        initialDayEventsStructure
+    const initialSelectedMonthEventsStructure = [
+        { message: 'Data com previsão de entradas', days: [] },
+        { message: 'Data com previsão de saídas', days: [] },
+        { message: 'Data com previsão de entradas e saídas', days: [] }
+    ];
+    const [selectedMonthEvents, setSelectedMonthEvents] = useState(
+        initialSelectedMonthEventsStructure
     );
 
-    const correctRangeOfDaysInMonth = rangeOfDaysInMonth.filter(day => {
-        if (day.isFromThisMonth) return day.value;
-    });
+    // Getting only days of selected month
+    const correctRangeOfDaysInMonth = rangeOfDaysInMonth
+        .filter(day => day.isFromThisMonth)
+        .reduce((onlyDaysArray, day) => {
+            onlyDaysArray.push(day.value);
+            return onlyDaysArray;
+        }, []);
 
     useEffect(() => {
-        let eventFound = false;
+        // Resetting daysEventsStructure to handle with selected month
+        setSelectedMonthEvents(initialSelectedMonthEventsStructure);
+        let newSelectedMonthEventsStructure = initialSelectedMonthEventsStructure;
 
+        // Getting event days of selected month sorted by the type of event (index)
         correctRangeOfDaysInMonth.map(day => {
             const dayEvents = getCalendarEventsAlert(
-                new Date(selectedYear, selectedMonthIndex, day.value)
+                new Date(selectedYear, selectedMonthIndex, day)
             );
-
-            if (dayEvents) eventFound = true;
 
             switch (dayEvents) {
                 case 'mixedValues':
-                    setDayEventsStructure([
-                        ...dayEventsStructure,
-                        dayEventsStructure[2].push(day.value)
-                    ]);
+                    newSelectedMonthEventsStructure[2].days.push(day);
+                    setSelectedMonthEvents(newSelectedMonthEventsStructure);
                     break;
 
                 case 'negativeValue':
                 case 'onlyNegativeValues':
-                    setDayEventsStructure([
-                        ...dayEventsStructure,
-                        dayEventsStructure[1].push(day.value)
-                    ]);
+                    newSelectedMonthEventsStructure[1].days.push(day);
+                    setSelectedMonthEvents(newSelectedMonthEventsStructure);
                     break;
 
                 case 'positiveValue':
                 case 'onlyPositiveValues':
-                    setDayEventsStructure([
-                        ...dayEventsStructure,
-                        dayEventsStructure[0].push(day.value)
-                    ]);
+                    newSelectedMonthEventsStructure[0].days.push(day);
+                    setSelectedMonthEvents(newSelectedMonthEventsStructure);
                     break;
-
-                case 'positiveValue':
-                case 'onlyPositiveValues':
-                    setDayEventsStructure([
-                        ...dayEventsStructure,
-                        dayEventsStructure[0].push(day.value)
-                    ]);
-                    break;
-            }
-
-            if (dayEvents === null && eventFound === false) {
-                setDayEventsStructure(initialDayEventsStructure);
             }
         });
+
+        console.log(selectedMonthEvents);
     }, [selectedMonthIndex, selectedYear]);
 
-    console.log(dayEventsStructure);
+    const selectedMonthEventsExist =
+        selectedMonthEvents[2].days.length > 0 ||
+        selectedMonthEvents[1].days.length > 0 ||
+        selectedMonthEvents[0].days.length > 0;
 
     return (
         <ContainerStyled>
@@ -82,29 +78,22 @@ export function UserCalendarEvents() {
                     <span>{currentDay}</span>
                     <p>Hoje</p>
                 </div>
-                {/* {
-                    // Getting the user day events in the selected month/year
-                    correctRangeOfDaysInMonth.map((day, i) => {
-                        const dayEvents = getCalendarEventsAlert(
-                            new Date(selectedYear, selectedMonthIndex, day.value)
-                        );
-
-                        if (dayEvents)
-                            return (
-                                <div key={i}>
-                                    <SpanStyled>{day.value}</SpanStyled>
-                                    <p>
-                                        {dayEvents === 'mixedValues'
-                                            ? 'Data com previsão de entradas e saídas'
-                                            : dayEvents === 'onlyPositiveValues' ||
-                                              dayEvents === 'positiveValue'
-                                            ? 'Data com previsão de entradas'
-                                            : 'Data com previsão de saídas'}
-                                    </p>
-                                </div>
-                            );
-                    })
-                } */}
+                {selectedMonthEventsExist ? (
+                    selectedMonthEvents.map(
+                        (daysEventsStructure, selectedMonthEventsIndex) => (
+                            <div key={selectedMonthEventsIndex}>
+                                {daysEventsStructure.days.map(
+                                    (day, daysEventsStructureIndex) => (
+                                        <span key={daysEventsStructureIndex}>{day}</span>
+                                    )
+                                )}
+                                <p>{daysEventsStructure.message}</p>
+                            </div>
+                        )
+                    )
+                ) : (
+                    <h4>Esse mês não possui movimentações</h4>
+                )}
             </div>
         </ContainerStyled>
     );
