@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const ContainerStyled = styled.div`
     position: absolute;
     top: 0;
-    right: calc(-64px * 2 - 2px);
+    width: 307px;
+    left: calc(388px + 64px * 2 + 2px);
 
     p {
         font-size: 14px;
@@ -11,4 +12,8 @@ export const ContainerStyled = styled.div`
         color: ${props => props.theme.colorSchema.textBaseLevel3};
         margin-bottom: 20px;
     }
+`;
+
+export const SpanStyled = styled.span`
+    color: #f1a;
 `;

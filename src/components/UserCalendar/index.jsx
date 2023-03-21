@@ -14,7 +14,6 @@ import { CalendarSelect } from '../CalendarSelect';
 import {
     getCalendarEventsAlert,
     getFormattedDate,
-    getRangeOfDaysInMonth,
     getYearsRangeList,
     monthNamesList,
     weekdayNamesList
@@ -28,12 +27,12 @@ export function UserCalendar() {
         setSelectedMonthIndex,
         selectedYear,
         setSelectedYear,
+        rangeOfDaysInMonth,
         setViewEventsInDate
     } = useContext(UserCalendarContext);
 
     const yearsRageList = getYearsRangeList(currentYear, 10);
     const currentYearIndex = yearsRageList.indexOf(currentYear);
-    const rangeOfDaysInMonth = getRangeOfDaysInMonth(selectedYear, selectedMonthIndex);
 
     const timeSkipButton = id => {
         console.log(`calling button: '${id}'`);
@@ -77,9 +76,7 @@ export function UserCalendar() {
                         dayEvents={
                             day.isFromThisMonth &&
                             getCalendarEventsAlert(
-                                selectedYear,
-                                selectedMonthIndex,
-                                day.value
+                                new Date(selectedYear, selectedMonthIndex, day.value)
                             )
                         }
                         onClick={() => {

@@ -77,8 +77,8 @@ export const getFormattedDate = (date, returnType) => {
     }
 };
 
-export const getCalendarEventsAlert = (year, month, day) => {
-    const receivedDate = getFormattedDate(new Date(year, month, day), 'JSON');
+export const getCalendarEventsAlert = date => {
+    const receivedDate = getFormattedDate(date, 'JSON');
 
     if (user.movements[receivedDate]) {
         if (user.movements[receivedDate].length > 1) {
