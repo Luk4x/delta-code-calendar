@@ -22,6 +22,7 @@ export function UserCalendarEvents() {
     const [selectedMonthEvents, setSelectedMonthEvents] = useState(
         initialSelectedMonthEventsStructure
     );
+    const [selectedMonthEventsExist, setSelectedMonthEventsExist] = useState(false);
 
     // Getting only days of selected month
     const correctRangeOfDaysInMonth = rangeOfDaysInMonth
@@ -32,11 +33,8 @@ export function UserCalendarEvents() {
         }, []);
 
     useEffect(() => {
-        // Resetting daysEventsStructure to handle with selected month
-        setSelectedMonthEvents(initialSelectedMonthEventsStructure);
-        let newSelectedMonthEventsStructure = initialSelectedMonthEventsStructure;
-
         // Getting event days of selected month sorted by the type of event (index)
+        const newSelectedMonthEventsStructure = initialSelectedMonthEventsStructure;
         correctRangeOfDaysInMonth.map(day => {
             const dayEvents = getCalendarEventsAlert(
                 new Date(selectedYear, selectedMonthIndex, day)
@@ -45,30 +43,27 @@ export function UserCalendarEvents() {
             switch (dayEvents) {
                 case 'mixedValues':
                     newSelectedMonthEventsStructure[2].days.push(day);
-                    setSelectedMonthEvents(newSelectedMonthEventsStructure);
                     break;
 
                 case 'negativeValue':
                 case 'onlyNegativeValues':
                     newSelectedMonthEventsStructure[1].days.push(day);
-                    setSelectedMonthEvents(newSelectedMonthEventsStructure);
                     break;
 
                 case 'positiveValue':
                 case 'onlyPositiveValues':
                     newSelectedMonthEventsStructure[0].days.push(day);
-                    setSelectedMonthEvents(newSelectedMonthEventsStructure);
                     break;
             }
         });
 
-        console.log(selectedMonthEvents);
-    }, [selectedMonthIndex, selectedYear]);
-
-    const selectedMonthEventsExist =
-        selectedMonthEvents[2].days.length > 0 ||
-        selectedMonthEvents[1].days.length > 0 ||
-        selectedMonthEvents[0].days.length > 0;
+        setSelectedMonthEvents(newSelectedMonthEventsStructure);
+        setSelectedMonthEventsExist(
+            newSelectedMonthEventsStructure[2].days.length > 0 ||
+                newSelectedMonthEventsStructure[1].days.length > 0 ||
+                newSelectedMonthEventsStructure[0].days.length > 0
+        );
+    }, [selectedMonthIndex, selectedYear, selectedMonthEventsExist]);
 
     return (
         <ContainerStyled>
