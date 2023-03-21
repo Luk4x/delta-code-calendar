@@ -19,4 +19,5 @@ A primeira tela no mobile e na web representam o estado inicial da aplicação, 
 Nesse estado inicial, vemos o dia de hoje destacado em verde e do lado (na web) ou embaixo (no mobile) vem uma legenda pra explicar o que os sinais e as cores significam.
 Quando o usuário seleciona um dia, aparecem os eventos daquele dia no lugar da legenda.
 
--   relatar erro no layout;
+-   remove unnecessary colors and components;
+-   check for complexity and comment it;

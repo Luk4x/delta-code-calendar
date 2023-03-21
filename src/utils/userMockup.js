@@ -31,7 +31,7 @@ export const user = {
             {
                 title: 'INSS: Kaori Ayanami',
                 type: 'imposto',
-                value: -780.42
+                value: -2780.42
             }
         ]
     }

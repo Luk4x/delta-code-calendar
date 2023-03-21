@@ -1,0 +1,31 @@
+import { createContext, useState } from 'react';
+
+export const UserCalendarContext = createContext();
+
+export const UserCalendarProvider = ({ children }) => {
+    const currentDay = new Date().getDate();
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+    const [selectedMonthIndex, setSelectedMonthIndex] = useState(currentMonth);
+    const [selectedYear, setSelectedYear] = useState(currentYear);
+
+    const [viewEventsInDate, setViewEventsInDate] = useState('initial');
+
+    return (
+        <UserCalendarContext.Provider
+            value={{
+                currentDay,
+                currentMonth,
+                currentYear,
+                selectedMonthIndex,
+                setSelectedMonthIndex,
+                selectedYear,
+                setSelectedYear,
+                viewEventsInDate,
+                setViewEventsInDate
+            }}
+        >
+            {children}
+        </UserCalendarContext.Provider>
+    );
+};

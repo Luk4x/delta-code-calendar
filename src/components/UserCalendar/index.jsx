@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { UserCalendarContext } from '../../context/UserCalendarContext';
 
 import {
     WrapTopButtonsStyled,
@@ -12,6 +13,7 @@ import { CalendarSelect } from '../CalendarSelect';
 
 import {
     getCalendarEventsAlert,
+    getFormattedDate,
     getRangeOfDaysInMonth,
     getYearsRangeList,
     monthNamesList,
@@ -19,22 +21,22 @@ import {
 } from '../../utils/calendarHelpers';
 
 export function UserCalendar() {
-    const currentDay = new Date().getDate();
-    const currentMonth = new Date().getMonth();
-    const currentYear = new Date().getFullYear();
+    const {
+        currentDay,
+        currentYear,
+        selectedMonthIndex,
+        setSelectedMonthIndex,
+        selectedYear,
+        setSelectedYear,
+        setViewEventsInDate
+    } = useContext(UserCalendarContext);
+
     const yearsRageList = getYearsRangeList(currentYear, 10);
     const currentYearIndex = yearsRageList.indexOf(currentYear);
-
-    const [selectedMonthIndex, setSelectedMonthIndex] = useState(currentMonth);
-    const [selectedYear, setSelectedYear] = useState(currentYear);
     const rangeOfDaysInMonth = getRangeOfDaysInMonth(selectedYear, selectedMonthIndex);
 
     const timeSkipButton = id => {
         console.log(`calling button: '${id}'`);
-    };
-
-    const viewEventsInDate = (year, month, day) => {
-        console.log(new Date(year, month, day));
     };
 
     return (
@@ -80,9 +82,13 @@ export function UserCalendar() {
                                 day.value
                             )
                         }
-                        onClick={() =>
-                            viewEventsInDate(selectedYear, selectedMonthIndex, day.value)
-                        }
+                        onClick={() => {
+                            const date = getFormattedDate(
+                                new Date(selectedYear, selectedMonthIndex, day.value),
+                                'JSON'
+                            );
+                            setViewEventsInDate(date);
+                        }}
                     >
                         <span>{day.value}</span>
                     </DaysInMonthStyled>
