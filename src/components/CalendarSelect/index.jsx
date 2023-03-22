@@ -2,8 +2,18 @@ import { ContainerStyled, SelectContainer } from './styled';
 
 import DarkCalendarIcon from '/assets/icons/calendar-dates-dark.svg';
 
-export function CalendarSelect({ name, apparentName, values, selectedValue, setValue }) {
+export function CalendarSelect({
+    name,
+    apparentName,
+    values,
+    selectedValue,
+    setValue,
+    updateUserCalendarEvents
+}) {
     const selectValue = e => {
+        // Updating UserCalendarEvents component to show status of selected month/year instead of status of selected day
+        updateUserCalendarEvents('initial');
+
         const value = e.target.value;
 
         // As I am showing the months by their proper names from an array, I work with them from the index of the value, which would be the name of the month, while with the years I work with the value itself. Below I do this check and return the correct value.

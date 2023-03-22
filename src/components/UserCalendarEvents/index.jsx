@@ -1,9 +1,26 @@
 import { useContext, useEffect, useState, Fragment } from 'react';
 import { UserCalendarContext } from '../../context/UserCalendarContext';
 
-import { getCalendarEventsAlert } from '../../utils/calendarHelpers';
+import {
+    ContainerStyled,
+    TitleStyled,
+    WrapListStyled,
+    DayButtonStyled,
+    NoEventsTitleStyled,
+    UserEventStyled,
+    UserValueStyled
+} from './styled';
 
-import { ContainerStyled, TitleStyled, WrapListStyled, DayButtonStyled } from './styled';
+import {
+    getCalendarEventsAlert,
+    getFormattedDate,
+    getUserEventsInSelectedDay
+} from '../../utils/calendarHelpers';
+import { getFormattedCurrency } from '../../utils/getFormattedCurrency';
+
+import CalendarNextIcon from '/assets/icons/calendar-next-dark.svg';
+import ArrowBottomIcon from '/assets/icons/arrow-bottom-left.svg';
+import ArrowTopIcon from '/assets/icons/arrow-top-right.svg';
 
 export function UserCalendarEvents() {
     const {
@@ -77,10 +94,14 @@ export function UserCalendarEvents() {
         );
     }, [selectedYear, selectedMonthIndex, selectedMonthEventsExist]);
 
-    return (
+    const totalUserEventsInSelectedDay = getUserEventsInSelectedDay(viewEventsInDate)
+        ? getUserEventsInSelectedDay(viewEventsInDate).length
+        : 0;
+
+    return viewEventsInDate === 'initial' ? (
         <ContainerStyled>
-            <TitleStyled>Legenda</TitleStyled>
-            <WrapListStyled>
+            <TitleStyled initialState={true}>Legenda</TitleStyled>
+            <WrapListStyled initialState={true}>
                 <span>{currentDay}</span>
                 <p>Hoje</p>
                 {selectedMonthEventsExist ? (
@@ -118,7 +139,50 @@ export function UserCalendarEvents() {
                             )
                     )
                 ) : (
-                    <h4>Esse mês não possui movimentações</h4>
+                    <NoEventsTitleStyled initialState={true}>
+                        Esse mês não possui movimentações
+                    </NoEventsTitleStyled>
+                )}
+            </WrapListStyled>
+        </ContainerStyled>
+    ) : (
+        <ContainerStyled>
+            <TitleStyled>
+                <img src={CalendarNextIcon} alt="Ícone de calendário" />
+                Movimentações de {getFormattedDate(viewEventsInDate, 'pt-BR')}
+                <span>{totalUserEventsInSelectedDay}</span>
+            </TitleStyled>
+            <WrapListStyled>
+                {totalUserEventsInSelectedDay > 0 ? (
+                    getUserEventsInSelectedDay(viewEventsInDate).map((userEvent, i) => {
+                        const isValueNegative = userEvent.value < 0;
+
+                        return (
+                            <UserEventStyled key={i}>
+                                <div>
+                                    <img
+                                        src={
+                                            isValueNegative
+                                                ? ArrowTopIcon
+                                                : ArrowBottomIcon
+                                        }
+                                        alt="Ícone de seta"
+                                    />
+                                    <div>
+                                        <h5>{userEvent.title}</h5>
+                                        <p>{userEvent.type}</p>
+                                    </div>
+                                </div>
+                                <UserValueStyled isValueNegative={isValueNegative}>
+                                    {getFormattedCurrency(userEvent.value)}
+                                </UserValueStyled>
+                            </UserEventStyled>
+                        );
+                    })
+                ) : (
+                    <NoEventsTitleStyled>
+                        Esse dia não possui movimentações
+                    </NoEventsTitleStyled>
                 )}
             </WrapListStyled>
         </ContainerStyled>

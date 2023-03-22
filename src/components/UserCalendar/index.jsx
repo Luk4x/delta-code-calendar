@@ -54,6 +54,7 @@ export function UserCalendar() {
                     values={monthNamesList}
                     selectedValue={selectedMonthIndex}
                     setValue={setSelectedMonthIndex}
+                    updateUserCalendarEvents={setViewEventsInDate}
                 />
                 <CalendarSelect
                     name="years"
@@ -61,6 +62,7 @@ export function UserCalendar() {
                     values={yearsRageList}
                     selectedValue={currentYearIndex}
                     setValue={setSelectedYear}
+                    updateUserCalendarEvents={setViewEventsInDate}
                 />
             </WrapSelectStyled>
             <WrapDaysStyled>

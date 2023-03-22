@@ -82,11 +82,6 @@ export const user = {
                 title: 'Prestação de Serviços: Delta Code...',
                 type: 'receita',
                 value: 12050
-            },
-            {
-                title: 'FGTS: Joãozinho de Jesus',
-                type: 'imposto',
-                value: 1680.72
             }
         ],
         '2023-05-19': [

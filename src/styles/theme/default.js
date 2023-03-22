@@ -9,13 +9,10 @@ export const theme = {
         backgroundHighlightLevel2: '#007D66',
         backgroundHighlightLevel3: '#F13E5E',
         backgroundHighlightLevel4: '#00A3851F',
-        backgroundHighlightLevel5:
-            'linear-gradient(315deg, rgba(0, 163, 133, 0.1) 0.78%, rgba(0, 163, 133, 0.05) 100.78%)',
-        backgroundHighlightLevel6:
-            'linear-gradient(315deg, rgba(241, 62, 94, 0.1) 0.78%, rgba(241, 62, 94, 0.05) 100.78%)',
         textBase: '#07232E',
         textBaseLevel2: '#909CAA',
         textBaseLevel3: '#737B84',
+        textBaseLevel4: '#0F4D64',
         borderBase: '#F1F1F1',
         borderBaseLevel2: '#DCDCDD'
     }
