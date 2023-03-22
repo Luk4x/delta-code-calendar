@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, Fragment } from 'react';
 import { UserCalendarContext } from '../../context/UserCalendarContext';
 
 import { getCalendarEventsAlert } from '../../utils/calendarHelpers';
 
-import { ContainerStyled, SpanStyled } from './styled';
+import { ContainerStyled, TitleStyled, WrapListStyled, DayButtonStyled } from './styled';
 
 export function UserCalendarEvents() {
     const {
@@ -15,9 +15,21 @@ export function UserCalendarEvents() {
     } = useContext(UserCalendarContext);
 
     const initialSelectedMonthEventsStructure = [
-        { message: 'Data com previsão de entradas', days: [] },
-        { message: 'Data com previsão de saídas', days: [] },
-        { message: 'Data com previsão de entradas e saídas', days: [] }
+        {
+            message: 'Data com previsão de entradas',
+            type: 'positiveValue',
+            days: []
+        },
+        {
+            message: 'Data com previsão de saídas',
+            type: 'negativeValue',
+            days: []
+        },
+        {
+            message: 'Data com previsão de entradas e saídas',
+            type: 'mixedValues',
+            days: []
+        }
     ];
     const [selectedMonthEvents, setSelectedMonthEvents] = useState(
         initialSelectedMonthEventsStructure
@@ -63,33 +75,52 @@ export function UserCalendarEvents() {
                 newSelectedMonthEventsStructure[1].days.length > 0 ||
                 newSelectedMonthEventsStructure[0].days.length > 0
         );
-    }, [selectedMonthIndex, selectedYear, selectedMonthEventsExist]);
+    }, [selectedYear, selectedMonthIndex, selectedMonthEventsExist]);
 
     return (
         <ContainerStyled>
-            <p>Legenda</p>
-            <div>
-                <div>
-                    <span>{currentDay}</span>
-                    <p>Hoje</p>
-                </div>
+            <TitleStyled>Legenda</TitleStyled>
+            <WrapListStyled>
+                <span>{currentDay}</span>
+                <p>Hoje</p>
                 {selectedMonthEventsExist ? (
                     selectedMonthEvents.map(
-                        (daysEventsStructure, selectedMonthEventsIndex) => (
-                            <div key={selectedMonthEventsIndex}>
-                                {daysEventsStructure.days.map(
-                                    (day, daysEventsStructureIndex) => (
-                                        <span key={daysEventsStructureIndex}>{day}</span>
-                                    )
-                                )}
-                                <p>{daysEventsStructure.message}</p>
-                            </div>
-                        )
+                        (daysEventsStructure, selectedMonthEventsIndex) =>
+                            daysEventsStructure.days.length > 0 && (
+                                <Fragment key={selectedMonthEventsIndex}>
+                                    <DayButtonStyled
+                                        dayEvents={daysEventsStructure.type}
+                                        arrayLength={daysEventsStructure.days.length}
+                                    >
+                                        {daysEventsStructure.days.map(
+                                            (
+                                                day,
+                                                daysEventsStructureIndex,
+                                                daysEventsStructureArray
+                                            ) => (
+                                                <span key={daysEventsStructureIndex}>
+                                                    {day}
+                                                    {
+                                                        // Setting ',' between
+                                                        daysEventsStructureArray.length >
+                                                            1 &&
+                                                            daysEventsStructureIndex <
+                                                                daysEventsStructureArray.length -
+                                                                    1 &&
+                                                            ','
+                                                    }
+                                                </span>
+                                            )
+                                        )}
+                                    </DayButtonStyled>
+                                    <p>{daysEventsStructure.message}</p>
+                                </Fragment>
+                            )
                     )
                 ) : (
                     <h4>Esse mês não possui movimentações</h4>
                 )}
-            </div>
+            </WrapListStyled>
         </ContainerStyled>
     );
 }
