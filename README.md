@@ -148,7 +148,7 @@
 
 ## 🗓️ Etapas
 
-> 46 das atuais 54 etapas já foram concluídas, mas novas podem ser adicionadas!
+> 26 das atuais 29 etapas já foram concluídas, mas novas podem ser adicionadas!
 
 <table align="center" height="548px">
   <tr>
@@ -172,7 +172,7 @@
       🗹
     </td>
     <td>
-      Busca por boas fotos de mostruário
+      Armazenamento dos ícones necessário do layout
     </td>
   </tr>
   <tr>
@@ -180,7 +180,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento da base da <code>pages/index</code>
+      Padronização das cores utilizando o <code>ThemeProvider</code>
     </td>
   </tr>
   <tr>
@@ -188,7 +188,7 @@
       🗹
     </td>
     <td>
-      Criação e configuração básica da base de dados com o <b>Sanity</b>
+      Criação do componente central <code>components/App</code>
     </td>
   </tr>
   <tr>
@@ -204,7 +204,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento do <code>components/Button</code> inspirado no <a href="https://devdojo.com/tailwindcss/buttons">DevDojo</a>
+      Desenvolvimento do <code>components/NavigationPanel</code>
     </td>
   </tr>
   <tr>
@@ -212,7 +212,7 @@
       🗹
     </td>
     <td>
-      Finalização da estrutura e estilo da <code>pages/index</code>
+      Desenvolvimento do <code>components/MainContent</code>
     </td>
   </tr>
   <tr>
@@ -220,7 +220,7 @@
       🗹
     </td>
     <td>
-      Configuração do painel de administração da base de dados
+      Desenvolvimento do <code>components/UserCalendar</code>
     </td>
   </tr>
   <tr>
@@ -228,7 +228,7 @@
       🗹
     </td>
     <td>
-      Preenchimento da base de dados
+      Correção do comportamento <code>components/Header</code> durante o scroll
     </td>
   </tr>
   <tr>
@@ -236,7 +236,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento da <code>pages/api/getCategories</code> e <code>pages/api/getProducts</code>
+      Criação do <code>utils/userMockup</code> e melhoria da lógica geral
     </td>
   </tr>
   <tr>
@@ -244,7 +244,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento da <code>utils/fetchCategories</code> e <code>utils/fetchProducts</code> 
+      Desenvolvimento do <code>components/CalendarSelect</code>
     </td>
   </tr>
   <tr>
@@ -252,7 +252,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento do <code>components/Product</code>
+      Criação do <code>utils/calendarHelpers</code> e melhoria da lógica geral
     </td>
   </tr>
   <tr>
@@ -260,7 +260,7 @@
       🗹
     </td>
     <td>
-      Busca dos produtos da base de dados via <b>SSR</b>
+      Deixando o fluxo básico do calendário funcional
       <img align="right" src="https://user-images.githubusercontent.com/86276393/213449768-416cc5b4-e3a7-4774-85b8-9a58cb1f8ae6.png" alt="arrow icon" />
     </td>
   </tr>
@@ -269,7 +269,7 @@
       🗹
     </td>
     <td>
-      Implementação do <b>Redux</b>
+      Estilo do calendário atualizado para 7x6
     </td>
   </tr>
   <tr>
@@ -277,7 +277,7 @@
       🗹
     </td>
     <td>
-      Implementação dos toasts
+      Recebendo os eventos do usuário ao longo do mês/ano selecionado no calendário
     </td>
   </tr>
   <tr>
@@ -285,7 +285,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento do <code>components/Cart</code>
+      Desenvolvimento do <code>components/UserCalendarEvents</code>
     </td>
   </tr>
   <tr>
@@ -293,7 +293,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento da estrutura e estilo da <code>pages/checkout</code>
+      Criação do <code>context/UserCalendarContext</code> e melhoria da lógica geral
     </td>
   </tr>
   <tr>
@@ -301,7 +301,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento do <code>components/CheckoutProduct</code>
+      Recebendo a lista de eventos do usuário no dia selecionado no calendário
     </td>
   </tr>
   <tr>
@@ -309,7 +309,7 @@
       🗹
     </td>
     <td>
-      Agrupamento dos produtos duplicados na <code>pages/checkout</code>
+      Filtrando os dias dos eventos baseado em seus tipos (entrada, saída ou ambos)
     </td>
   </tr>
   <tr>
@@ -317,7 +317,7 @@
       🗹
     </td>
     <td>
-      Implementação do <b>Stripe</b>
+      Resolvendo bug do dia atrasado e melhoria da lógica geral
     </td>
   </tr>
   <tr>
@@ -325,7 +325,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento do <code>utils/get-stripejs</code> e <code>utils/api-helpers</code>
+      Criação do <code>utils/getFormattedCurrency</code>
     </td>
   </tr>
   <tr>
@@ -333,7 +333,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento da <code>pages/api/checkout_sessions</code>
+      Deixando o calendário completamente funcional e melhoria da lógica geral
     </td>
   </tr>
   <tr>
@@ -341,7 +341,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento da estrutura e estilo da <code>pages/success</code>
+      Melhoria do <code>utils/userMockup</code>
     </td>
   </tr>
   <tr>
@@ -349,7 +349,7 @@
       🗹
     </td>
     <td>
-      Desenvolvimento da <code>pages/api/getSession</code> e <code>utils/fetchLineProducts</code>
+      Desenvolvimento da responsividade
     </td>
   </tr>
   <tr>
@@ -357,177 +357,7 @@
       🗹
     </td>
     <td>
-      Finalização da <code>pages/success</code> obtendo os dados via <code>SSR</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Implementação do <b>NextAuth</b> e criação do <code>pages/api/auth/[...nextauth]</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Criação do projeto na <b>Google Cloud</b>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Implementação do <b>NextAuth</b> no <b>Sanity</b>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Deploy da base de dados
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Otimização das imagens do projeto
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Mudança do <a href="https://heroicons.com/">Hero Icons</a> para o <a href="https://react-icons.github.io/react-icons/">React Icons</a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Melhoria do design e responsividade da <code>pages/index</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Melhoria da responsividade da <code>pages/checkout</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Criação da licença e desenvolvimento do README do projeto <!-- e README-en -->
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Melhoria do <b>SEO</b> do projeto
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Remoção do <code>react-currency-formatter</code> (bugging)
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Desenvolvimento do <code>components/Currency</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Deploy do projeto na <a href="https://vercel.com">Vercel</a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Divisão de branches de Produção e Desenvolvimento
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Desenvolvimento Cross-Browser
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Estilização do Scroll
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Melhoria da responsividade do <code>pages/index</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      <details>
-        <summary>Correção geral de Bugs</summary>
-        󠁼󠁼󠁼————————————󠁼<br/>
-        🗹 Correção do menu Mobile do <code>pages/index</code> com o novo scroll<br/>
-        🗹 Correção da posição do <code>components/Cart</code> com o novo scroll<br/>
-        🗹 Correção do botão <b>Comprar</b> do <code>pages/index</code> com o novo scroll<br/>
-        🗹 Correção do título do <code>Head</code><br/>
-        🗹 Correção do scroll do <code>pages/success</code><br/>
-        🗹 Correção do error <b>validateDOMNesting</b> no <code>pages/success</code>
-        🗹 Correção do SEO
-      </details>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Implementação do <a href="https://vercel.com/docs/concepts/analytics/audiences/quickstart">Vercel Analytics</a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      🗹
-    </td>
-    <td>
-      Adição das minhas redes sociais
+      Melhoria do SEO e da lógica geral
     </td>
   </tr>
   <tr>
@@ -535,7 +365,8 @@
       ☐
     </td>
     <td>
-      Melhoria do tratamento de erros
+      Melhoria do <code>UserCalendar</code>: Chamar mês/ano anterior/posterior ao clicar em seus <br/>
+      dias (isFromThisMonth=false)
     </td>
   </tr>
   <tr>
@@ -543,7 +374,9 @@
       ☐
     </td>
     <td>
-      Personalização dos Toasts
+      Melhoria do <code>UserCalendarEvents</code>: Mostrar apenas 1 dia quando no estado inicial <br/>
+      e tiver mais de um (ex: 5...), e mostrar os outros ao evento de click/hover/focus na <br/>
+      lista dos dias
     </td>
   </tr>
   <tr>
@@ -551,68 +384,9 @@
       ☐
     </td>
     <td>
-      Otimização da performance do projeto <!-- https://www.linkedin.com/posts/dev-luiz-carlos_frontend-desenvolvedores-html-activity-7019619056190173185-B56Z?utm_source=share&utm_medium=member_desktop, nextfont --> 
+    Melhoria do <code>UserCalendarEvents</code>: Limitar tamanho da string do título do evento
     </td>
   </tr>
-  <tr>
-    <td>
-      ☐
-    </td>
-    <td>
-      Desenvolvimento da busca de CEP na <code>pages/checkout</code> <!-- cosume cep api + headlessui combobox --> 
-    </td>
-  </tr>
-  <tr>
-    <td>
-      ☐
-    </td>
-    <td>
-      Armazenamento os produtos do carrinho em <b>Local Storage</b>
-    </td>
-  </tr><tr>
-    <td>
-      ☐
-    </td>
-    <td>
-      Desenvolvimento do sistema de busca <!-- header search icon -->
-    </td>
-  </tr>
-  <tr>
-    <td>
-      ☐
-    </td>
-    <td>
-      Desenvolvimento da página para cada produto
-    </td>
-  </tr>
-  <tr>
-    <td>
-      ☐
-    </td>
-    <td>
-      Adição de novos produtos e categorias <!-- airpods, tv?, acessórios? -->
-    </td>
-  </tr>
-  <tr>
-    <td>
-      ☐
-    </td>
-    <td>
-      Clonagem de páginas da Apple <!-- explore => loja, suporte, só na apple => só na apple + apple tv 4k + apple tv+ -->
-    </td>
-  </tr>
-  <tr>
-    <td>
-      ☐
-    </td>
-    <td>
-      Criação de página de produtos parceiros consumindo uma API
-    </td>
-  </tr>
-  
-  <!-- suggest user account data in payment -->
-  <!-- migrate from tailwind to styled-components if/when necessary -->
-  <!-- integrate with kayke and luiz e-commerce -->
 </table>
 
 ## 📝 Sobre
