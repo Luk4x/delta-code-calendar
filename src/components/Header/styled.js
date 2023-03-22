@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HeaderStyled = styled.header`
     position: sticky;
     top: 0;
+    z-index: 1;
     background: ${props => props.theme.colorSchema.backgroundHighlight};
     height: 75px;
     width: 100%;
@@ -26,5 +27,10 @@ export const HeaderStyled = styled.header`
 
     & > img {
         cursor: pointer;
+    }
+
+    @media screen and (max-width: 640px) {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
     }
 `;

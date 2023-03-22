@@ -5,6 +5,10 @@ export const ContainerStyled = styled.div`
     top: 0;
     min-width: 307px;
     left: calc(388px + 64px * 2 + 2px);
+
+    @media screen and (max-width: 1040px) {
+        position: static;
+    }
 `;
 
 export const TitleStyled = styled.h3`

@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { UserCalendarContext } from '../../context/UserCalendarContext';
 
 import {
+    ContainerStyled,
     WrapTopButtonsStyled,
     WrapSelectStyled,
     WrapDaysStyled,
@@ -34,12 +35,12 @@ export function UserCalendar() {
     const yearsRageList = getYearsRangeList(currentYear, 10);
     const currentYearIndex = yearsRageList.indexOf(currentYear);
 
-    const timeSkipButton = id => {
-        console.log(`calling button: '${id}'`);
+    const timeSkipButton = name => {
+        console.log(`calling button: '${name}'`);
     };
 
     return (
-        <div>
+        <ContainerStyled>
             <WrapTopButtonsStyled>
                 {['Hoje', 'Esta semana', 'Este mês'].map(buttonName => (
                     <button key={buttonName} onClick={() => timeSkipButton(buttonName)}>
@@ -82,17 +83,19 @@ export function UserCalendar() {
                             )
                         }
                         onClick={() => {
-                            const date = getFormattedDate(
-                                new Date(selectedYear, selectedMonthIndex, day.value),
-                                'JSON'
-                            );
-                            setViewEventsInDate(date);
+                            if (day.isFromThisMonth) {
+                                const date = getFormattedDate(
+                                    new Date(selectedYear, selectedMonthIndex, day.value),
+                                    'JSON'
+                                );
+                                setViewEventsInDate(date);
+                            }
                         }}
                     >
                         <span>{day.value}</span>
                     </DaysInMonthStyled>
                 ))}
             </WrapDaysStyled>
-        </div>
+        </ContainerStyled>
     );
 }

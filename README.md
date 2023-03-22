@@ -19,5 +19,5 @@ A primeira tela no mobile e na web representam o estado inicial da aplicação, 
 Nesse estado inicial, vemos o dia de hoje destacado em verde e do lado (na web) ou embaixo (no mobile) vem uma legenda pra explicar o que os sinais e as cores significam.
 Quando o usuário seleciona um dia, aparecem os eventos daquele dia no lugar da legenda.
 
--   remove unnecessary colors and components;
--   check for complexity and comment it;
+-   improve UserCalendar: call other month by clicking in his day (isFromThisMonth=false);
+-   improve UserCalendarEvents: show only 1 day event in initial state, and show others by hover/click/focus;

@@ -25,7 +25,6 @@ export const UserCalendarProvider = ({ children }) => {
                 selectedYear,
                 setSelectedYear,
                 rangeOfDaysInMonth,
-
                 viewEventsInDate,
                 setViewEventsInDate
             }}

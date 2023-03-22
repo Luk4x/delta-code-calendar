@@ -13,6 +13,7 @@ import {
 
 import {
     getCalendarEventsAlert,
+    getCorrectRangeOfDaysInMonth,
     getFormattedDate,
     getUserEventsInSelectedDay
 } from '../../utils/calendarHelpers';
@@ -53,13 +54,7 @@ export function UserCalendarEvents() {
     );
     const [selectedMonthEventsExist, setSelectedMonthEventsExist] = useState(false);
 
-    // Getting only days of selected month
-    const correctRangeOfDaysInMonth = rangeOfDaysInMonth
-        .filter(day => day.isFromThisMonth)
-        .reduce((onlyDaysArray, day) => {
-            onlyDaysArray.push(day.value);
-            return onlyDaysArray;
-        }, []);
+    const correctRangeOfDaysInMonth = getCorrectRangeOfDaysInMonth(rangeOfDaysInMonth);
 
     useEffect(() => {
         // Getting event days of selected month sorted by the type of event (index)
@@ -94,8 +89,9 @@ export function UserCalendarEvents() {
         );
     }, [selectedYear, selectedMonthIndex, selectedMonthEventsExist]);
 
-    const totalUserEventsInSelectedDay = getUserEventsInSelectedDay(viewEventsInDate)
-        ? getUserEventsInSelectedDay(viewEventsInDate).length
+    const userEventsInSelectedDay = getUserEventsInSelectedDay(viewEventsInDate);
+    const totalUserEventsInSelectedDay = userEventsInSelectedDay
+        ? userEventsInSelectedDay.length
         : 0;
 
     return viewEventsInDate === 'initial' ? (
@@ -154,7 +150,7 @@ export function UserCalendarEvents() {
             </TitleStyled>
             <WrapListStyled>
                 {totalUserEventsInSelectedDay > 0 ? (
-                    getUserEventsInSelectedDay(viewEventsInDate).map((userEvent, i) => {
+                    userEventsInSelectedDay.map((userEvent, i) => {
                         const isValueNegative = userEvent.value < 0;
 
                         return (

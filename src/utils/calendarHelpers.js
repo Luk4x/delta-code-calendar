@@ -71,6 +71,18 @@ export const getRangeOfDaysInMonth = (year, month) => {
     return rangeOfDaysInMonth;
 };
 
+// Getting only days of selected month
+export const getCorrectRangeOfDaysInMonth = rangeOfDaysInMonth => {
+    const correctRangeOfDaysInMonth = rangeOfDaysInMonth
+        .filter(day => day.isFromThisMonth)
+        .reduce((onlyDaysArray, day) => {
+            onlyDaysArray.push(day.value);
+            return onlyDaysArray;
+        }, []);
+
+    return correctRangeOfDaysInMonth;
+};
+
 export const getFormattedDate = (date, formatType) => {
     if (formatType === 'pt-BR') {
         // Check if date is in JSON Format used (ex: 2023-03-10). This is necessary because JS Date bug: https://stackoverflow.com/questions/29047991/tojson-on-date-object-converting-the-date-back-to-utc

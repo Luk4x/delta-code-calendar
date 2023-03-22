@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const ContainerStyled = styled.div`
+    @media screen and (max-width: 1040px) {
+        border-bottom: 2px solid ${props => props.theme.colorSchema.borderBase};
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+    }
+`;
+
 export const WrapTopButtonsStyled = styled.div`
     display: flex;
     justify-content: start;

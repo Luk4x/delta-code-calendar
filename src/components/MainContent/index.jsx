@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { MainStyled, UserInfoStyled, SectionStyled, FooterStyled } from './styled';
 
 import { user } from '../../utils/userMockup';

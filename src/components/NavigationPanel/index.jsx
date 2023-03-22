@@ -8,10 +8,22 @@ import documentIcon from '/assets/icons/file-document.svg';
 export function NavigationPanel() {
     return (
         <NavStyled>
-            <img src={calendarIcon} alt="Ícone de calendário" />
-            <img src={volumeIcon} alt="Ícone de volume" />
-            <img src={commentIcon} alt="Ícone de comentário" />
-            <img src={documentIcon} alt="Ícone de arquivo documento" />
+            <div>
+                <img src={calendarIcon} alt="Ícone de calendário" />
+                <span>Calendário</span>
+            </div>
+            <div>
+                <img src={volumeIcon} alt="Ícone de volume" />
+                <span>Comunicados</span>
+            </div>
+            <div>
+                <img src={commentIcon} alt="Ícone de comentário" />
+                <span>Solicitações</span>
+            </div>
+            <div>
+                <img src={documentIcon} alt="Ícone de arquivo documento" />
+                <span>Processos</span>
+            </div>
         </NavStyled>
     );
 }
