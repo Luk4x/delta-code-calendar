@@ -54,7 +54,7 @@
         <details>
           <summary>Motivo</summary>
           <br/>
-          <i>A essência do teste é analisar a qualidade do meu código e meu processo de racicínio enquanto resolvo um problema específico, e concluí que a estrutura minimalista do Vite é a ideal para o caso.</i>
+          <i>Após refletir sobre o real objetivo do teste, devido a sua simplicidade em termos de recursos, concluí que a estrutura minimalista do Vite era ideal.</i>
         </details>
       </h6>
     </td>
@@ -394,12 +394,15 @@
 > Assistir o vídeo acima e/ou acessar o projeto online ajudará na compreensão da explicação!
 
 <img align="right" src="https://user-images.githubusercontent.com/86276393/212980660-edc0babb-f014-439f-b823-4a4e9ece7d45.png" alt="notepad icon" />
-Em resumo, a aplicação se consiste num E-Commerce da Apple, simulando um fluxo de compra completo, onde o usuário pode ou não se autenticar pela sua conta Google através do <b>NextAuth</b>, adicionar e remover os produtos do seu carrinho com auxílio do <b>Redux</b>, simular o pagamento desses produtos através do ambiente de testes do <b>Stripe</b>, e ao final será redirecionado para uma página de confirmação e agradecimento da compra.
-Esse fluxo de compra em si envolvendo os produtos buscados da base dados do <b>Sanity</b> é o principal destaque da aplicação, mas existem outros pontos muito importantes que podem ser conferidos nas sessões abaixo.
+Em resumo, a aplicação se consiste no meu resultado ao fazer o <a href="https://www.figma.com/file/pmfrVwEEjDQgZlItVmjr9c/Challenge%3A-Delta-Code?node-id=0-1&t=bqDD8plVKRwU2Sq4-0">Teste técnico de calendário da Delta Code</a>, onde deve-se basicamente desenvolver esse layout fornecido com fidelidade, sendo a principal parte do teste, o desenvolvimento do componente de calendário com as interações requisitadas e respeitando a restrição de fazer do 0, sem auxílio de nenhuma lib externa.
 <br/><br/>
-Também recomendo conferir especialmente os motivos da utilização de <b>NextJS</b>, <b>Typescript</b>, <b>Redux</b> e <b>Tailwind</b> na sessão de <a href="#-tecnologias-utilizadas">Tecnologias</a>, pois meu principal objetivo com esse projeto foi desenvolver minha autonomia com tais tecnologias, visto que sou um desenvolvedor <b>React</b> e elas são uma parte fundamental de seu ecossistema, sendo elas as principais responsáveis pela agilidade, confiança, performance e profissionalismo de forma geral durante o desenvolvimento da aplicação, devido aos seus excelentes recursos.
+Como mencionado nas instruções, fiquei bastante tentado a desenvolver uma API para essa aplicação, mas após refletir percebi que devido ao prazo de 7 dias, tanto a API quanto a Interface ficariam bem medianas por falta de tempo se eu tentasse desenvolver ambas, portanto decidi focar todo o meu tempo e esforço no Front-end (mas ainda irei desenvolver essa API futuramente 🤩), e me aprofundar o máximo que conseguir nele dentro desse prazo, tentando desenvolver um código extremamente escalável, manutenível, e principalmente, indo além do que foi requisitado nas instruções do calendário.
 <br/><br/>
-Mas isso claro, sem tirar o mérito das outras tecnologias utilizadas, todas elas desempenham um papel fundamental especificado junto delas, e contribuem para o resultado do projeto como um todo, e irei continuar aprendendo e me aprofundando bastante nessas tecnologias e no que for necessário durante o desenvolvimento dessa aplicação para colocar todas as minhas ideias em prática e cumprir todas as tarefas listadas na sessão de <a href="#%EF%B8%8F-etapas">Etapas</a>, que é uma sessão que também vale a pena conferir para ter uma visão geral sobre a evolução do projeto.
+E também, acredito que essa minha abordagem de focar todo meu tempo no Front-end tenha muito mais haver com a essência do teste, pois afinal eu estou concorrendo a uma vaga de Front-end, e o teste tem como principal objetivo, além de avaliar a fidelidade do design da minha Interface, avaliar também a qualidade do meu código e como eu resolvo um problema em específico como sendo um Dev Front-end, então nada melhor do que me verem sofrendo tentando desenvolver um componente de calendário <b>completamente funcional</b> e ainda por cima <b>do zero</b> 😂
+<br/><br/>
+Bem, depois dessa introdução mais descontraída, nas sessões abaixo eu falo mais detalhadamente sobre cada parte da aplicação.
+<br/>
+Também recomendo dar uma conferida na sessão de <a href="#-tecnologias-utilizadas">Tecnologias</a>, caso queria saber o motivo que me levou a escolher as tecnologias utilizadas, e na sessão de <a href="#%EF%B8%8F-etapas">Etapas</a> caso queria ter uma visão geral de como foi/está sendo a evolução do projeto.
 
 ### 📄 Páginas e Rotas
 
