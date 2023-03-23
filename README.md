@@ -21,8 +21,8 @@
   <a href="#-tecnologias-utilizadas">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#%EF%B8%8F-etapas">Etapas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-páginas-e-rotas">Páginas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-demais-componentes">Componentes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-componentes">Componentes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-utilitários">Utilitários</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-clonando-o-projeto">Clone</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-contato-dos-contribuintes">Contato</a>
 </p>
@@ -398,108 +398,64 @@ Em resumo, a aplicação se consiste no meu resultado ao fazer o <a href="https:
 <br/><br/>
 Como mencionado nas instruções, fiquei bastante tentado a desenvolver uma API para essa aplicação, mas após refletir percebi que devido ao prazo de 7 dias, tanto a API quanto a Interface ficariam bem medianas por falta de tempo se eu tentasse desenvolver ambas, portanto decidi focar todo o meu tempo e esforço no Front-end (mas ainda irei desenvolver essa API futuramente 🤩), e me aprofundar o máximo que conseguir nele dentro desse prazo, tentando desenvolver um código extremamente escalável, manutenível, e principalmente, indo além do que foi requisitado nas instruções do calendário.
 <br/><br/>
-E também, acredito que essa minha abordagem de focar todo meu tempo no Front-end tenha muito mais haver com a essência do teste, pois afinal eu estou concorrendo a uma vaga de Front-end, e o teste tem como principal objetivo, além de avaliar a fidelidade do design da minha Interface, avaliar também a qualidade do meu código e como eu resolvo um problema em específico como sendo um Dev Front-end, então nada melhor do que me verem sofrendo tentando desenvolver um componente de calendário <b>completamente funcional</b> e ainda por cima <b>do zero</b> 😂
+E também, acredito que essa minha abordagem de focar todo meu tempo no Front-end tenha muito mais a ver com a essência do teste, pois afinal eu estou concorrendo a uma vaga de Front-end, e o teste tem como principal objetivo, além de avaliar a fidelidade do design da minha Interface, avaliar também a qualidade do meu código e como eu resolvo um problema em específico como sendo um Dev Front-end, então nada melhor do que me verem sofrendo tentando desenvolver um componente de calendário <b>completamente funcional</b> e ainda por cima <b>do zero</b> 😂
 <br/><br/>
 Bem, depois dessa introdução mais descontraída, nas sessões abaixo eu falo mais detalhadamente sobre cada parte da aplicação.
 <br/>
 Também recomendo dar uma conferida na sessão de <a href="#-tecnologias-utilizadas">Tecnologias</a>, caso queria saber o motivo que me levou a escolher as tecnologias utilizadas, e na sessão de <a href="#%EF%B8%8F-etapas">Etapas</a> caso queria ter uma visão geral de como foi/está sendo a evolução do projeto.
 
-### 📄 Páginas e Rotas
+### 📑 Componentes
 
-#### A aplicação tem um total de 3 componentes de página, sendo eles:
+#### A aplicação conta com 10 componentes, sendo eles:
 
-  - `pages/index`: Essa é a Home da aplicação, onde o usuário pode efetuar o LogIn/LogOut, e adicionar produtos ao carrinho. Os produtos são buscados da base de dados utilizando o conceito de **SSR**;
-  - `pages/checkout`: Essa é a página de revisão da compra, onde o usuário pode remover produtos do carrinho e seguir com o pagamento, sendo redirecionado para o ambiente de teste do Stripe - uma página de pagamento;
-  - `pages/success`: Após ter preenchido os dados e efetuado o pagamento na página do Stripe, o usuário será redirecionado para essa página, que é a de confirmação e agradecimento pela compra.
- 
-#### A aplicação tem um total de 5 componentes de rota, sendo eles:
-
-  - `pages/api/auth/[...nextauth]`: Esse é o arquivo de configurações globais do NextAuth;
-  - `pages/api/checkout_sessions`: Essa rota é responsável por transformar os dados da compra recebidos no formato que o Stripe exige, e criar uma sessão no Stripe para o usuário. _Exemplo de uso:_ `pages/checkout`;
-  - `pages/api/getCategories`: Essa rota é responsável por retornar as categorias dos produtos da base de dados. _Exemplo de uso:_ `utils/fetchCategories`;
-  - `pages/api/getProducts`: Essa rota é responsável por retornar os produtos da base de dados. _Exemplo de uso:_ `utils/fetchProducts`;
-  - `pages/api/getSession`: Essa rota é responsável por retornar uma sessão a partir do id recebido. _Exemplo de uso:_ `utils/fetchLineProducts`.
-
-### 📑 Demais Componentes
-
-#### A aplicação também conta com mais 17 componentes, sendo eles:
-
-  - `pages/_app`: Nesse componente ficam configurações globais da aplicação, como os contextos do Redux e do NextAuth que envolvem toda a aplicação, estilos globais, e a renderização dos toasts;
-  - `pages/_document`: Resumidamente, nesse componente ficam as configurações de **SEO** da aplicação.
+  - `components/App`: Esse componente é basicamente onde se encontra toda a aplicação. Ele reflete uma boa prática que faço de centralizar toda a aplicação nele, e renderizá-lo na `main`, para fins de organização;
+  - `components/Header`: Esse componente é o cabeçalho da aplicação;
+  - `components/NavigationPanel`: Esse componente é o painel de navegação à esquerda (desktop) ou em baixo (mobile);
+  - `components/MainContent`: Esse componente é o que agrupa as principais informações da aplicação, sendo elas basicamente os dados do usuário (nome, foto...) no início e os componentes de calendário;
+  - `components/UserCalendar`: Esse é o primeiro componente de calendário, relativo ao próprio calendário de fato. A partir dos dados recebidos, ele retorna dinamicamente os botões de salto no tempo acima do calendário, dias da semana, dias do mês selecionado... É por ele também que é possível selecionar os dias, meses e anos do calendário, e também mostra os dias que tem eventos destacados;
+  - `components/CalendarSelect`: Esse componente é usado dentro do `components/UserCalendar`, e ele é responsável por agilizar e padronizar o processo de seleção de mês e ano, além de prevenir repetição de código;
+  - `components/UserCalendarEvents`: Esse é o segundo componente de calendário, sendo responsável por mostrar o resultado da interação do usuário com o componente de `components/UserCalendar`, ou mesmo mostrar em mais detalhes o que já está sendo mostrado no `components/UserCalendar`. Isto é, ele é responsável por mostrar por exemplo, a legenda informado o status do mês/ano selecionado (se tem eventos ou não, e se sim, quais), ou os dados dos dias que contém eventos, quando o usuário clica nesses dias;
 
   <br/>
 
-  - `components/Button`: Esse componente é relativo ao botão reaproveitado periodicamente durante a aplicação;
-  - `components/Cart`: Esse componente é relativo ao ícone de carrinho que aparece quando existe algum item no carrinho e o scroll está baixo de 400;
-  - `components/CheckoutProduct`: Esse componente é relativo aos produtos mostrados na `pages/checkout`;
-  - `components/Currency`: Esse componente é responsável pela formatação de moeda dos preços;
-  - `components/Header`: Esse componente é relativo ao cabeçalho da aplicação;
-  - `components/Product`: Esse componente é relativo aos produtos mostrados no `pages/index`.
+  - `context/UserCalendarContext`: Esse componente é o Context API que envolve os componentes de `components/UserCalendar` e `components/UserCalendarEvents`, para que ambos possam trocar informações mais facilmente e organizadamente;
+  - `styles/GlobalStyles`: Esse é o componente que aplica os estilos globais da aplicação, ele é utilizado no `main`;
+  - `styles/theme/default`: Esse componente tem a ver com o recurso de themeProvider do Styled Components, sendo nele que ficam armazenadas todas as informações relacionadas a cor do tema. Essa é outra boa prática que sempre costumo fazer quando uso Styled components, para fins de organização e flexibilidade ao lidar com temas ou apenas com cores em geral.
 
-  <br/>
+### 📄 Utilitários
 
-  - `redux/cartSlice`: Utilizando o Redux, nesse componente está a lógica usada para lidar com as ações de interação do usuário em relação ao sistema de shopping. Ele exporta funções de extrema importância, como `addToCart` e `removeFromCart` (que são autoexplicativas), e valores como `selectCartProducts` (total de produtos no carrinho), e dentre outros, que são usados periodicamente pelo projeto;
-  - `redux/store`: Esse é o arquivo de configurações do Redux.
+#### A aplicação conta com 3 utilitários, sendo eles:
 
-  <br/>
-
-  - `utils/api-helpers`: A ideia desse componente é a de agilizar e reutilizar determinados processos feitos na `pages/api`, componentizando-os nesse componente. Por enquanto ele exporta apenas a `fetchPostJSON`, responsável por agilizar requisições POST;
-  - `utils/fetchCategories`: Esse componente responsável por agilizar a busca pelas categorias dos produtos na base de dados;
-  - `utils/fetchProducts`: Esse componente responsável por agilizar a busca pelos produtos na base de dados;
-  - `utils/fetchLineProducts`: Esse componente, trabalhando em conjunto com a `pages/api/getSession`, é responsável por retornar os produtos baseado no id enviado, e juntos eles realizam a verificação do id e podem retornar 404 caso esteja incorreto;
-  - `utils/get-stripejs`: Esse componente é responsável por inicializar o Stripe, usando o **Sigleton Pattern** para não inicializá-lo mais de uma vez.
-
-<br/>
-
-  - `sanity`: Esse é o arquivo de configurações do Sanity. Ele também exporta a `urlFor`, função que auxilia na exibição das imagens dos produtos da base de dados;
-  - `apple-store-database`: Essa é a base de dados do projeto, criada utilizando o Sanity.
+  - `utils/getFormattedCurrency`: Responsável por, a partir do número recebido, retorná-lo corretamente em formatado em 'BRL;
+  - `utils/calendarHelpers`: Responsável por dispor de diversas e variadas funções/informações úteis ao se lidar com os componentes de `components/UserCalendar` e `components/UserCalendarEvents`, sendo elas:
+    - `monthNamesList` e `weekdayNamesList`: Essas são respectivamente: uma lista contendo os nomes dos 12 meses do ano, e uma lista contendo os nomes dos 7 dias da semana. Ao lidar com datas no Javascript, ele retorna os meses e dias da semana em forma de números, e uso essas listas para nomear esses números com seus respectivos nomes na posição do array.
+    - `getYearsRangeList`: Essa função retorna um array de anos baseado nas informações de `year` e `range` que ela recebe. Ela é usada no `components/UserCalendar` para montar a seleção dos anos.
+    - `getRangeOfDaysInMonth`: Essa função retorna um array de dias baseado nas informações de `year` e `month` que ela recebe, contendo 42 items para preencher o layout grid do calendário de 7x6, seguindo o padrão dos calendários de sistema, mostrando os últimos dias do mês anterior e os primeiros dias do mês posterior;
+    - `getCorrectRangeOfDaysInMonth`: Há momentos em que preciso de um array apenas com os dias do ano e mês informados, e para isso existe essa função. Ela recebe o retorno da função anterior (ou seja, um array com 42 items) e o filtra, deixando apenas o dias do mês e ano informados. Um exemplo de uso dessa função, é no `components/UserCalendarEvents`, em que dependo exclusivamente dos dias do mês/ano selecionado para estruturar como eles aparecerão na legenda;
+    - `getFormattedDate`: Baseado na data recebida, essa função pode retornar essa data formatada em `JSON` ou em `pt-BR`. Um exemplo de uso para essa função, é no `components/UserCalendarEvents` - quando o usuário clica em algum dia no calendário e aparece a data formatada no título;
+    - `getCalendarEventsAlert`: A partir da data recebida, essa função retorna o tipo de evento (entrada, saída, ou ambos) de um dia e relaciona isso a suas respectivas possíveis ocorrências (se nesse dia, tem apenas um evento, ou mais, e se tem mais, se são do mesmo tipo ou não). Simplificando, são 5 retornos possíveis: 1. O dia só teve um evento, e foi do tipo 'entrada', 2. O dia só teve um evento, e foi do tipo 'saída', 3. O dia teve mais de um evento, e foram todos do tipo 'entrada', 4. O dia teve mais de um evento, e foram todos do tipo 'saída', 5. O dia teve mais de um evento, e não foram todos do tipo 'entrada' e nem 'saída' (ou seja, foram mistos);
+    - `getUserEventsInSelectedDay`: A partir da data recebida (em JSON), essa função verifica se o usuário tem algum evento nessa data e o retorna. Um exemplo de uso dessa função, é quando o usuário clica em algum dia no calendário - se esse dia tenha eventos, eles serão mostrados ao lado, senão uma mensagem informando que esse dia não possui eventos;
+  - `utils/userMockup`: Esse componente é um dos mais importantes e impactantes de toda a aplicação. Baseei minha lógica no modelo de usuário que esse componente exporta, assim simulando uma API, e nesse mesmo componente, eu deixei uma estrutura de exemplo com eventos espalhados pelo ano apenas para ter uma noção de como seria se você estivesse consumindo uma API com todos esses dados retirados da sua conta, como o Google Calendar API ou algo do tipo;
 
 ## 📖 Clonando o Projeto
 
-Para clonar e executar este projeto em seu computador, você precisará do [Git](https://git-scm.com/) e [Node.js v18.12.1](https://nodejs.org/en/) ou superior previamente instalados.<br>
+Para clonar e executar este projeto em seu computador, você precisará do [Git](https://git-scm.com/) e [Node.js v18.14.2](https://nodejs.org/en/) ou superior previamente instalados.<br>
 Feito isso, no terminal:
 
 ```bash
 # Clone esse repositório com:
-> git clone https://github.com/Luk4x/apple-store.git
+> git clone https://github.com/Luk4x/delta-code-calendar.git
 
 # Entre no repositório com:
-> cd apple-store
-```
+> cd delta-code-calendar
 
-Estando agora na raiz do projeto, crie o arquivo `.env.local`, que deve conter as seguintes variáveis de ambiente:
-
-```bash
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-NEXT_PUBLIC_SANITY_DATASET=production
-NEXT_PUBLIC_SANITY_PROJECT_ID=
-SANITY_API_TOKEN=
-
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-STRIPE_SECRET_KEY=
-
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=
-```
-
-Para configurar tais variáveis, você precisará criar um projeto no [Sanity](https://www.sanity.io/), [Stripe](https://stripe.com/en-br/) e [Google Cloud](https://cloud.google.com/), além de que precisará preencher a base de dados também.<br/>
-Feito isso:
-
-```bash
 # Instale as dependências com:
-> npm install
-> cd apple-store-database
 > npm install
 
 # Execute o projeto com:
 > npm run dev
-> cd ..
-> npm run dev
 
-# Feito isso, você já poderá estar acessando o projeto em: http://localhost:3000
+# Feito isso, você já poderá acessar o projeto pelo link que aparecerá no terminal! (algo como http://localhost:3000/ ou http://127.0.0.1:5173/)
 ```
 
 ## 📞 Contato dos Contribuintes
