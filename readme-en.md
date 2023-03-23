@@ -52,7 +52,7 @@
       </a>
       <h6>
         <details>
-          <summary>Motivo</summary>
+          <summary>Reason</summary>
           <br/>
           <i>After reflecting on the real purpose of the test, due to its simplicity in terms of features, I concluded that Vite's minimalist structure was ideal.</i>
         </details>
@@ -69,7 +69,7 @@
       </a>
       <h6>
         <details>
-          <summary>Motivo</summary>
+          <summary>Reason</summary>
           <br/>
           <i>It is a requirement for testing, and is the foundation of Vite.</i>
         </details>
@@ -86,7 +86,7 @@
       </a>
       <h6>
         <details>
-          <summary>Motivo</summary>
+          <summary>Reason</summary>
           <br/>
           <i>I chose it because, considering that I would have to develop many solutions from 0, I would need a styling tool as powerful and flexible as it is.</i>
         </details>
@@ -103,7 +103,7 @@
       </a>
       <h6>
         <details>
-          <summary>Motivo</summary>
+          <summary>Reason</summary>
           <br/>
           <i>It's implicit in Vite's <code>JSX</code> syntax.</i>
         </details>
@@ -120,7 +120,7 @@
       </a>
       <h6>
         <details>
-          <summary>Motivo</summary>
+          <summary>Reason</summary>
           <br/>
           <i>It's implicit in Styled Components.</i>
         </details>
@@ -137,7 +137,7 @@
       </a>
       <h6>
         <details>
-          <summary>Motivo</summary>
+          <summary>Reason</summary>
           <br/>
           <i>It's implicit in Vite's <code>JSX</code> syntax.</i>
         </details>
