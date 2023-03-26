@@ -362,11 +362,11 @@
   </tr>
   <tr>
     <td>
-      ☐
+      🗹
     </td>
     <td>
       <code>UserCalendar</code> improvement: Call previous/next month/year when clicking on their <br/>
-       days (isFromThisMonth=false)
+       days
     </td>
   </tr>
   <tr>

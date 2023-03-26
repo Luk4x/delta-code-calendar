@@ -362,11 +362,11 @@
   </tr>
   <tr>
     <td>
-      ☐
+      🗹
     </td>
     <td>
       Melhoria do <code>UserCalendar</code>: Chamar mês/ano anterior/posterior ao clicar em seus <br/>
-      dias (isFromThisMonth=false)
+      dias
     </td>
   </tr>
   <tr>

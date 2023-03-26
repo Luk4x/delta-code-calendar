@@ -33,10 +33,38 @@ export function UserCalendar() {
     } = useContext(UserCalendarContext);
 
     const yearsRageList = getYearsRangeList(currentYear, 10);
-    const currentYearIndex = yearsRageList.indexOf(currentYear);
+    const selectedYearIndex = yearsRageList.indexOf(selectedYear);
 
     const timeSkipButton = name => {
         console.log(`calling button: '${name}'`);
+    };
+
+    const handleDayClick = (dayValue, isFromThisMonth, isFromPreviousMonth) => {
+        // if user is clicking in a day that isFromThisMonth, then it will show the selected day events, else if user is clicking in a day that isFromPreviousMonth, then it will go back one month (or if is already in first month, it will go to the last month from last year), else if user is clicking in a day that !isFromPreviousMonth (next month), then it will go next one month (or if is already in last month, it will go to the first month from next year)
+
+        if (isFromThisMonth) {
+            const date = getFormattedDate(
+                new Date(selectedYear, selectedMonthIndex, dayValue),
+                'JSON'
+            );
+            setViewEventsInDate(date);
+        } else if (isFromPreviousMonth) {
+            if (selectedMonthIndex === 0) {
+                setSelectedMonthIndex(11);
+                setSelectedYear(selectedYear - 1);
+            } else {
+                setSelectedMonthIndex(selectedMonthIndex - 1);
+            }
+            setViewEventsInDate('initial');
+        } else {
+            if (selectedMonthIndex === 11) {
+                setSelectedMonthIndex(0);
+                setSelectedYear(selectedYear + 1);
+            } else {
+                setSelectedMonthIndex(selectedMonthIndex + 1);
+            }
+            setViewEventsInDate('initial');
+        }
     };
 
     return (
@@ -61,7 +89,7 @@ export function UserCalendar() {
                     name="years"
                     apparentName="ano"
                     values={yearsRageList}
-                    selectedValue={currentYearIndex}
+                    selectedValue={selectedYearIndex}
                     setValue={setSelectedYear}
                     updateUserCalendarEvents={setViewEventsInDate}
                 />
@@ -82,15 +110,14 @@ export function UserCalendar() {
                                 new Date(selectedYear, selectedMonthIndex, day.value)
                             )
                         }
-                        onClick={() => {
-                            if (day.isFromThisMonth) {
-                                const date = getFormattedDate(
-                                    new Date(selectedYear, selectedMonthIndex, day.value),
-                                    'JSON'
-                                );
-                                setViewEventsInDate(date);
-                            }
-                        }}
+                        isFromThisMonth={day.isFromThisMonth}
+                        onClick={() =>
+                            handleDayClick(
+                                day.value,
+                                day.isFromThisMonth,
+                                day.isFromPreviousMonth
+                            )
+                        }
                     >
                         <span>{day.value}</span>
                     </DaysInMonthStyled>

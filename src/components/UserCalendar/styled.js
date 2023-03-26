@@ -79,6 +79,7 @@ export const DaysInMonthStyled = styled.button`
     &:focus {
         ${props =>
             !props.currentDay &&
+            props.isFromThisMonth &&
             `border: 1px solid ${props.theme.colorSchema.backgroundHighlight}`};
 
         &::before,
@@ -109,6 +110,8 @@ export const DaysInMonthStyled = styled.button`
         height: 6px;
         border-radius: 100%;
     }
+
+    ${({ isFromThisMonth }) => !isFromThisMonth && `opacity: 0.5;`}
 
     ${props => {
         switch (props.dayEvents) {

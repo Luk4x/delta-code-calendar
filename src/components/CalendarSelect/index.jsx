@@ -21,7 +21,7 @@ export function CalendarSelect({
             const valueIndex = values.indexOf(e.target.value);
             setValue(valueIndex);
         } else {
-            setValue(value);
+            setValue(parseInt(value));
         }
     };
 
@@ -31,7 +31,7 @@ export function CalendarSelect({
             <SelectContainer>
                 <img src={DarkCalendarIcon} alt="Ícone de calendário" />
                 <select
-                    defaultValue={values[selectedValue]}
+                    value={values[selectedValue]}
                     name={name}
                     id={name}
                     onChange={e => selectValue(e)}

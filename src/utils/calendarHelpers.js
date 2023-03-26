@@ -59,13 +59,18 @@ export const getRangeOfDaysInMonth = (year, month) => {
     for (let i = 0; i < firstWeekday; i++) {
         rangeOfDaysInMonth.unshift({
             value: totalDaysInPreviousMonth - i,
-            isFromThisMonth: false
+            isFromThisMonth: false,
+            isFromPreviousMonth: true
         });
     }
 
     // Completing the array with the first days of the next month.
     for (let i = 1; rangeOfDaysInMonth.length < 42; i++) {
-        rangeOfDaysInMonth.push({ value: i, isFromThisMonth: false });
+        rangeOfDaysInMonth.push({
+            value: i,
+            isFromThisMonth: false,
+            isFromPreviousMonth: false
+        });
     }
 
     return rangeOfDaysInMonth;
