@@ -30,7 +30,7 @@
 
 ## 📹 Apresentação em Vídeo do Projeto
 <div align="center">
-  <video src="https://user-images.githubusercontent.com/86276393/227108080-d7d33e2f-b0b7-4de7-b014-119c14047c1b.mp4" />
+  <video src="https://user-images.githubusercontent.com/86276393/230458348-9834960b-f00b-4e91-8d1e-0a71883d6f4d.mp4" />
 </div>
 
 > **Caso o vídeo apresente algum erro, recarregue a página!**<br>
